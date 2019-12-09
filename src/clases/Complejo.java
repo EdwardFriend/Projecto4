@@ -11,14 +11,13 @@ import java.lang.Math;
 public class Complejo {
 	private double x;
 	private double y;
+	int a;
+	double pares[][]=new double[a][2];
 	private final double i=Math.sqrt(-1);
-	public Complejo() {
-		Scanner in =new Scanner(System.in);
-		System.out.println("Ingrese el valor de x: ");
-		x=in.nextInt();
-		System.out.println("Ingrese el valor de y: ");
-		y=in.nextInt();
-		System.out.println("Forma binomica: z="+x+"+i"+y);
+	public Complejo() {}
+	public Complejo(int x,int y) {
+		this.x=x;
+		this.y=y;
 	}
 	public double getX() {
 		return this.x;
@@ -31,6 +30,25 @@ public class Complejo {
 	}
 	public void setY(double y) {
 		this.y=y;
+	}
+	public void crearBinomica() {
+		Scanner in =new Scanner(System.in);
+		System.out.println("cuantos pares ordenados desea ingresar?: ");
+		a=in.nextInt();
+		for(int c=0;c<a;c++) {
+				System.out.println("Ingrese el valor de x: ");
+				x=in.nextInt();
+				System.out.println("Ingrese el valor de y: ");
+				y=in.nextInt();
+				System.out.println("Forma binomica: z="+x+"+i"+y);
+				pares[c][0]=x;
+				pares[c][1]=y;
+		}
+		System.out.println("Ingrese el valor de x: ");
+		x=in.nextInt();
+		System.out.println("Ingrese el valor de y: ");
+		y=in.nextInt();
+		System.out.println("Forma binomica: z="+x+"+i"+y);
 	}
 	public void transformarPolar() {
 		double r;
