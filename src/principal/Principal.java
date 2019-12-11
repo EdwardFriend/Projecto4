@@ -22,7 +22,7 @@ public class Principal {
 		
 		do {
 			i.crearBinomica();
-			
+			do {
 			System.out.println("Que accion desea realizar: ");
 			System.out.println("1.Cambiar a polar");
 			System.out.println("2.Sumar");
@@ -30,8 +30,7 @@ public class Principal {
 			System.out.println("4.Multiplicar");
 			System.out.println("5.Dividir");
 			int a=in.nextInt();
-			do {
-				switch(a) {
+			switch(a) {
 				case 1:
 					i.transformarPolar();
 					break;
@@ -57,6 +56,7 @@ public class Principal {
 		
 		do {
 		i.crearPolar();
+		do {
 		System.out.println("Que accion desea realizar: ");
 		System.out.println("1.Cambiar a binomica");
 		System.out.println("2.Sumar");
@@ -64,8 +64,8 @@ public class Principal {
 		System.out.println("4.Multiplicar");
 		System.out.println("5.Dividir");
 		int b=in.nextInt();
-		do {
-			switch(b) {
+		
+		    switch(b) {
 			case 1:
 				i.transformarBinomica();
 				break;

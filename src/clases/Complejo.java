@@ -214,21 +214,24 @@ public class Complejo {
 	}
 	
 	public void transformarPolar() {
-		double r;
-		double ang;
-		r=Math.sqrt(Math.pow(x,2)+Math.pow(y,2));
-		ang=Math.atan(y/x);
-		System.out.println("Forma polar de "+x+"+i"+y+" es: z="+(double)Math.round(r*100)/100+"(cos"+(double)Math.round(ang*100)/100+"+isen"+(double)Math.round(ang*100)/100+")");
+
+		for(int c=0;c<a;c++){
+			polar[c][0]=Math.sqrt(Math.pow(pares[c][0],2)+Math.pow(pares[c][1],2));
+			polar[c][1]=Math.atan(pares[c][1]/pares[c][0]);
+			System.out.println("Forma polar de "+pares[c][0]+"+i"+pares[c][1]+" es: z="+(double)Math.round(polar[c][0]*100)/100+"(cos"+(double)Math.round(polar[c][1]*100)/100+"+isen"+(double)Math.round(polar[c][1]*100)/100+")");
+		}
 	}
 	public void transformarBinomica() {
 		System.out.println("Forma polar: z="+r+"(cos"+ang+"+isen"+ang+")");
 		double n;
 		double z;
 		n=1.0;
-		z=Math.pow(r, n);
-		x=z*(Math.cos(ang*n));
-		y=z*(Math.sin(ang*n));
-		System.out.println("Forma rectangular de z="+(double)Math.round(r*100)/100+"(cos"+(double)Math.round(ang*100)/100+"isen"+(double)Math.round(ang*100)/100+") es: z="+(double)Math.round(x*100)/100+"+i"+(double)Math.round(y*100)/100);
+		for(int c=0;c<a;c++) {
+			z=Math.pow(polar[c][0], n);
+			pares[c][0]=z*(Math.cos(polar[c][1]*n));
+			pares[c][1]=z*(Math.sin(polar[c][1]*n));
+			System.out.println("Forma rectangular de z="+(double)Math.round(polar[c][0]*100)/100+"(cos"+(double)Math.round(polar[c][1]*100)/100+"isen"+(double)Math.round(polar[c][1]*100)/100+") es: z="+(double)Math.round(pares[c][0]*100)/100+"+i"+(double)Math.round(pares[c][1]*100)/100);
+		}
 	}
 
 }
