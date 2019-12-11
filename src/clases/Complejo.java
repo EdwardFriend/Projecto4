@@ -14,8 +14,8 @@ public class Complejo {
 	private double r;
 	private double ang;
 	int a;
-	double pares[][]=new double[a][2];
-	double polar[][]=new double[a][2];
+	double pares[][];
+	double polar[][];
 	private final double i=Math.sqrt(-1);
 	public Complejo() {}
 	public double getX() {
@@ -30,10 +30,12 @@ public class Complejo {
 	public void setY(double y) {
 		this.y=y;
 	}
+	
 	public void crearBinomica() {
 		Scanner in =new Scanner(System.in);
 		System.out.println("cuantos pares ordenados desea ingresar?: ");
 		a=in.nextInt();
+		pares=new double[a][2];
 		for(int c=0;c<a;c++) {
 				System.out.println("Ingrese el valor de x: ");
 				x=in.nextDouble();
@@ -41,23 +43,26 @@ public class Complejo {
 				y=in.nextDouble();
 				pares[c][0]=x;
 				pares[c][1]=y;
+				System.out.println("Forma binomica "+(c+1)+": z="+x+"+i"+y);
 		}
-		System.out.println("Forma binomica: z="+x+"+i"+y);
 	}
 	public void crearPolar() {
 		Scanner in =new Scanner(System.in);
 		System.out.println("cuantos pares ordenados desea ingresar?: ");
 		a=in.nextInt();
+		polar=new double[a][2];
+		
 		for(int c=0;c<a;c++) {
 				System.out.println("Ingrese el modulo: ");
 				r=in.nextDouble();
 				System.out.println("Ingrese el angulo: ");
 				ang=in.nextDouble();
-				System.out.println("Forma polar: z="+r+"(cos"+ang+"+isen"+ang+")");
+				System.out.println("Forma polar "+(c+1)+": z="+r+"(cos"+ang+"+isen"+ang+")");
 				polar[c][0]=r;
 				polar[c][1]=ang;
 		}
 	}
+	
 	public void sumarBinomica() {
 		y=0;
 		x=0;
@@ -103,6 +108,111 @@ public class Complejo {
 		System.out.println("Multiplicacion: z=("+x+")+i("+y+")");
 	}
 
+	public void sumarPolar() {
+		Scanner in =new Scanner(System.in);
+		double n;
+		double z;
+		n=1.0;
+		for(int c=0;c<a;c++) {
+			z=Math.pow(polar[c][0], n);
+			pares[c][0]=z*(Math.cos(polar[c][1]*n));
+			x+=pares[c][0];
+		}
+		for(int c=0;c<a;c++) {
+			z=Math.pow(polar[c][0], n);
+			pares[c][1]=z*(Math.sin(polar[c][1]*n));
+			y+=pares[c][1];
+		}
+		System.out.println("Desea visualizar el resultado de forma binomica o polar?: 1.Binomica       2.Polar");
+		int a=in.nextInt();
+		if(a==1) {
+			System.out.println("Suma: z="+(double)Math.round(x*100)/100+"+i"+(double)Math.round(y*100)/100);
+		}
+		if(a==2) {
+			r=Math.sqrt(Math.pow(x,2)+Math.pow(y,2));
+			ang=Math.atan(y/x);
+			System.out.println("Suma: z="+(double)Math.round(r*100)/100+"(cos"+(double)Math.round(ang*100)/100+"+isen"+(double)Math.round(ang*100)/100+")");
+		}
+	}
+	public void restarPolar() {
+		Scanner in =new Scanner(System.in);
+		double n;
+		double z;
+		n=1.0;
+		for(int c=0;c<a;c++) {
+			z=Math.pow(polar[c][0], n);
+			pares[c][0]=z*(Math.cos(polar[c][1]*n));
+			x-=pares[c][0];
+		}
+		for(int c=0;c<a;c++) {
+			z=Math.pow(polar[c][0], n);
+			pares[c][1]=z*(Math.sin(polar[c][1]*n));
+			y-=pares[c][1];
+		}
+		System.out.println("Desea visualizar el resultado de forma binomica o polar?: 1.Binomica       2.Polar");
+		int a=in.nextInt();
+		if(a==1) {
+			System.out.println("Suma: z="+(double)Math.round(x*100)/100+"+i"+(double)Math.round(y*100)/100);
+		}
+		if(a==2) {
+			r=Math.sqrt(Math.pow(x,2)+Math.pow(y,2));
+			ang=Math.atan(y/x);
+			System.out.println("Suma: z="+(double)Math.round(r*100)/100+"(cos"+(double)Math.round(ang*100)/100+"+isen"+(double)Math.round(ang*100)/100+")");
+		}
+	}
+	public void multiplicarPolar() {
+		Scanner in =new Scanner(System.in);
+		double n;
+		double z;
+		n=1.0;
+		for(int c=0;c<a;c++) {
+			z=Math.pow(polar[c][0], n);
+			pares[c][0]=z*(Math.cos(polar[c][1]*n));
+			x=x*(pares[c][0]);
+		}
+		for(int c=0;c<a;c++) {
+			z=Math.pow(polar[c][0], n);
+			pares[c][1]=z*(Math.sin(polar[c][1]*n));
+			y=y*(pares[c][1]);
+		}
+		System.out.println("Desea visualizar el resultado de forma binomica o polar?: 1.Binomica       2.Polar");
+		int a=in.nextInt();
+		if(a==1) {
+			System.out.println("Suma: z="+(double)Math.round(x*100)/100+"+i"+(double)Math.round(y*100)/100);
+		}
+		if(a==2) {
+			r=Math.sqrt(Math.pow(x,2)+Math.pow(y,2));
+			ang=Math.atan(y/x);
+			System.out.println("Suma: z="+(double)Math.round(r*100)/100+"(cos"+(double)Math.round(ang*100)/100+"+isen"+(double)Math.round(ang*100)/100+")");
+		}
+	}
+	public void dividirPolar() {
+		Scanner in =new Scanner(System.in);
+		double n;
+		double z;
+		n=1.0;
+		for(int c=0;c<a;c++) {
+			z=Math.pow(polar[c][0], n);
+			pares[c][0]=z*(Math.cos(polar[c][1]*n));
+			x=(pares[c][0])/y;
+		}
+		for(int c=0;c<a;c++) {
+			z=Math.pow(polar[c][0], n);
+			pares[c][1]=z*(Math.sin(polar[c][1]*n));
+			y=(pares[c][1])/y;
+		}
+		System.out.println("Desea visualizar el resultado de forma binomica o polar?: 1.Binomica       2.Polar");
+		int a=in.nextInt();
+		if(a==1) {
+			System.out.println("Suma: z="+(double)Math.round(x*100)/100+"+i"+(double)Math.round(y*100)/100);
+		}
+		if(a==2) {
+			r=Math.sqrt(Math.pow(x,2)+Math.pow(y,2));
+			ang=Math.atan(y/x);
+			System.out.println("Suma: z="+(double)Math.round(r*100)/100+"(cos"+(double)Math.round(ang*100)/100+"+isen"+(double)Math.round(ang*100)/100+")");
+		}
+	}
+	
 	public void transformarPolar() {
 		double r;
 		double ang;
@@ -120,4 +230,5 @@ public class Complejo {
 		y=z*(Math.sin(ang*n));
 		System.out.println("Forma rectangular de z="+(double)Math.round(r*100)/100+"(cos"+(double)Math.round(ang*100)/100+"isen"+(double)Math.round(ang*100)/100+") es: z="+(double)Math.round(x*100)/100+"+i"+(double)Math.round(y*100)/100);
 	}
+
 }

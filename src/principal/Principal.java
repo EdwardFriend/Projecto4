@@ -54,13 +54,39 @@ public class Principal {
 			System.out.println("Desea ingresar nuevos valores?:   1.SI    2.NO");
 		    n=in.nextInt();
 		}while(n==1);
-		/*System.out.println("Definir numeros complejos de forma polar: ");
-
-		System.out.println("Modulo: ");
-		double x=in.nextDouble();
-		System.out.println("Angulo: ");
-		double y=in.nextDouble();
-		i.transformarRectangular(x,y);*/
-	}
-
+		
+		do {
+		i.crearPolar();
+		System.out.println("Que accion desea realizar: ");
+		System.out.println("1.Cambiar a binomica");
+		System.out.println("2.Sumar");
+		System.out.println("3.Restar");
+		System.out.println("4.Multiplicar");
+		System.out.println("5.Dividir");
+		int b=in.nextInt();
+		do {
+			switch(b) {
+			case 1:
+				i.transformarBinomica();
+				break;
+			case 2:
+				i.sumarPolar();
+				break;
+			case 3:
+				i.restarPolar();
+				break;
+			case 4:
+				i.multiplicarPolar();
+				break;
+			case 5:
+				i.dividirPolar();
+				break;
+			}
+			System.out.println("Desea realizar otra operacion?:   1.SI    2.NO");
+			m=in.nextInt();
+		}while(m==1);
+		System.out.println("Desea ingresar nuevos valores?:   1.SI    2.NO");
+	    n=in.nextInt();
+	}while(n==1);
+}
 }
