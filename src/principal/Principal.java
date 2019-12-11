@@ -5,7 +5,7 @@ package principal;
 import clases.Complejo;
 import java.util.Scanner;
 /**
- * @author ALICIA FIERRO
+ * @author MARIO LUZARDO
  *
  */
 public class Principal {
@@ -19,7 +19,9 @@ public class Principal {
 		Complejo i = new Complejo();
 		int m;
 		int n;
-		
+		System.out.println("Escoja la forma de numeros complejos con la que desea trabajar: 1.Forma Binomica   2.Forma Polar");
+		int f=in.nextInt();
+		if(f==1) {
 		do {
 			i.crearBinomica();
 			do {
@@ -32,7 +34,7 @@ public class Principal {
 			int a=in.nextInt();
 			switch(a) {
 				case 1:
-					i.transformarPolar();
+					i.transformarApolar();
 					break;
 				case 2:
 					i.sumarBinomica();
@@ -53,7 +55,8 @@ public class Principal {
 			System.out.println("Desea ingresar nuevos valores?:   1.SI    2.NO");
 		    n=in.nextInt();
 		}while(n==1);
-		
+		}
+		if(f==2) {
 		do {
 		i.crearPolar();
 		do {
@@ -88,5 +91,6 @@ public class Principal {
 		System.out.println("Desea ingresar nuevos valores?:   1.SI    2.NO");
 	    n=in.nextInt();
 	}while(n==1);
+	}
 }
 }
